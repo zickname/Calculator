@@ -3,27 +3,23 @@
 while (true)
 {
     Console.Write("Введите первое число: ");
-
+    
     double firstNumber = GetNumberFromConsole();
     MathOperation operation = GetOperatorFromConsole();
 
     Console.Write("Введите второе число: ");
 
     double secondNumber = GetNumberFromConsole();
+    double result = Calculate(firstNumber, secondNumber, operation, errorMessage: out var errorMessage);
+    
+    if (errorMessage)
+    {
+        Console.WriteLine("Ошибка. Нельзя делить на ноль!");
+        continue;
+    }
 
-    try
-    {
-        double result = Calculate(firstNumber, secondNumber, operation);
-        Console.WriteLine($"Результат: {result}");
-    }
-    catch (DivideByZeroException)
-    {
-        Console.WriteLine("Нельзя делить на ноль");
-    }
-    catch (ArgumentException)
-    {
-        Console.WriteLine("Неверный знак");
-    }
+    Console.WriteLine($"Результат: {result}");
+   
 }
 
 static double GetNumberFromConsole()
@@ -57,18 +53,19 @@ MathOperation GetOperatorFromConsole()
     };
 }
 
-double Calculate(double firstNumber, double secondNumber, MathOperation operation)
+double Calculate(double firstNumber, double secondNumber, MathOperation operation, out bool errorMessage)
 {
+    errorMessage = default;
     switch (operation)
     {
         case MathOperation.Addition: return firstNumber + secondNumber;
         case MathOperation.Subtraction: return firstNumber - secondNumber;
         case MathOperation.Multiplication: return firstNumber * secondNumber;
         case MathOperation.Division:
-            if (secondNumber == 0) throw new DivideByZeroException();
-
-            return firstNumber / secondNumber;
-        default: throw new ArgumentException();
+            if (secondNumber != 0) return firstNumber / secondNumber;
+            errorMessage = true;
+            return 0;
+        default: throw new NotSupportedException();
     }
 }
 
