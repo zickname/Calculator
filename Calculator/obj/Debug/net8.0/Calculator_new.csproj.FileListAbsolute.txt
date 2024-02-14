@@ -1,0 +1,15 @@
+C:\Users\OA1PC1 User\RiderProjects\Calculator_new\Calculator_new\obj\Debug\net8.0\Calculator_new.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\OA1PC1 User\RiderProjects\Calculator_new\Calculator_new\obj\Debug\net8.0\Calculator_new.AssemblyInfoInputs.cache
+C:\Users\OA1PC1 User\RiderProjects\Calculator_new\Calculator_new\obj\Debug\net8.0\Calculator_new.AssemblyInfo.cs
+C:\Users\OA1PC1 User\RiderProjects\Calculator_new\Calculator_new\obj\Debug\net8.0\Calculator_new.csproj.CoreCompileInputs.cache
+C:\Users\OA1PC1 User\RiderProjects\Calculator_new\Calculator_new\obj\Debug\net8.0\Calculator_new.sourcelink.json
+C:\Users\OA1PC1 User\RiderProjects\Calculator_new\Calculator_new\bin\Debug\net8.0\Calculator_new.exe
+C:\Users\OA1PC1 User\RiderProjects\Calculator_new\Calculator_new\bin\Debug\net8.0\Calculator_new.deps.json
+C:\Users\OA1PC1 User\RiderProjects\Calculator_new\Calculator_new\bin\Debug\net8.0\Calculator_new.runtimeconfig.json
+C:\Users\OA1PC1 User\RiderProjects\Calculator_new\Calculator_new\bin\Debug\net8.0\Calculator_new.dll
+C:\Users\OA1PC1 User\RiderProjects\Calculator_new\Calculator_new\bin\Debug\net8.0\Calculator_new.pdb
+C:\Users\OA1PC1 User\RiderProjects\Calculator_new\Calculator_new\obj\Debug\net8.0\Calculator_new.dll
+C:\Users\OA1PC1 User\RiderProjects\Calculator_new\Calculator_new\obj\Debug\net8.0\refint\Calculator_new.dll
+C:\Users\OA1PC1 User\RiderProjects\Calculator_new\Calculator_new\obj\Debug\net8.0\Calculator_new.pdb
+C:\Users\OA1PC1 User\RiderProjects\Calculator_new\Calculator_new\obj\Debug\net8.0\Calculator_new.genruntimeconfig.cache
+C:\Users\OA1PC1 User\RiderProjects\Calculator_new\Calculator_new\obj\Debug\net8.0\ref\Calculator_new.dll
