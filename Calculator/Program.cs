@@ -11,15 +11,19 @@ while (true)
 
     double secondNumber = GetNumberFromConsole();
 
-    if (operation == MathOperation.Division && secondNumber == 0)
+    try
     {
-        Console.WriteLine("\nОшибка, нельзя делить на ноль," + "\n" + "Попробуйте ещё раз!\n");
-        continue;
+        double result = Calculate(firstNumber, secondNumber, operation);
+        Console.WriteLine($"Результат: {result}");
     }
-
-    double result = Calculate(firstNumber, secondNumber, operation);
-
-    Console.WriteLine($"Результат: {result}");
+    catch (DivideByZeroException)
+    {
+        Console.WriteLine("Нельзя делить на ноль");
+    }
+    catch (ArgumentException)
+    {
+        Console.WriteLine("Неверный знак");
+    }
 }
 
 static double GetNumberFromConsole()
@@ -55,14 +59,17 @@ MathOperation GetOperatorFromConsole()
 
 double Calculate(double firstNumber, double secondNumber, MathOperation operation)
 {
-    return operation switch
+    switch (operation)
     {
-        MathOperation.Addition => firstNumber + secondNumber,
-        MathOperation.Subtraction => firstNumber - secondNumber,
-        MathOperation.Multiplication => firstNumber * secondNumber,
-        MathOperation.Division => firstNumber / secondNumber,
-        _ => throw new ArgumentException("Неверный знак действия")
-    };
+        case MathOperation.Addition: return firstNumber + secondNumber;
+        case MathOperation.Subtraction: return firstNumber - secondNumber;
+        case MathOperation.Multiplication: return firstNumber * secondNumber;
+        case MathOperation.Division:
+            if (secondNumber == 0) throw new DivideByZeroException();
+
+            return firstNumber / secondNumber;
+        default: throw new ArgumentException();
+    }
 }
 
 enum MathOperation
