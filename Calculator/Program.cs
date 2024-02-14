@@ -1,7 +1,6 @@
 ﻿using System.Globalization;
 
 while (true)
-
 {
     Console.Write("Введите первое число: ");
 
@@ -11,13 +10,13 @@ while (true)
     Console.Write("Введите второе число: ");
 
     double secondNumber = GetNumberFromConsole();
-    
+
     if (operation == MathOperation.Division && secondNumber == 0)
     {
-        Console.WriteLine("\nОшибка, нельзя делить на ноль," + "\n" +
-                          "Попробуйте ещё раз!\n");
+        Console.WriteLine("\nОшибка, нельзя делить на ноль," + "\n" + "Попробуйте ещё раз!\n");
         continue;
     }
+
     double result = Calculate(firstNumber, secondNumber, operation);
 
     Console.WriteLine($"Результат: {result}");
@@ -28,9 +27,7 @@ static double GetNumberFromConsole()
     double number;
 
     while (!double.TryParse(Console.ReadLine(), NumberStyles.Float, CultureInfo.CurrentCulture, out number))
-    {
         Console.WriteLine("Ошибка. Введите корректное число.");
-    }
 
     return number;
 }
@@ -38,7 +35,7 @@ static double GetNumberFromConsole()
 MathOperation GetOperatorFromConsole()
 {
     char sign;
-    string validOperators = "+-*/";
+    const string validOperators = "+-*/";
     do
     {
         Console.Write("Введите знак действия ( +, -, *, / ): ");
