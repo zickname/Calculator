@@ -10,16 +10,16 @@ while (true)
     Console.Write("Введите второе число: ");
 
     double secondNumber = GetNumberFromConsole();
-    double? result = Calculate(firstNumber, secondNumber, operation);
+    (double? result, string errorMessage, bool isError) result = Calculate(firstNumber, secondNumber, operation);
     
-    if (result == null)
+    if (result.isError) 
     {
-        Console.WriteLine("Ошибка. Нельзя делить на ноль!");
+        Console.WriteLine($"{result.errorMessage}");
         continue;
     }
 
-    Console.WriteLine($"Результат: {result}");
-   
+    Console.WriteLine($"Результат: {result.result}");
+
 }
 
 static double GetNumberFromConsole()
@@ -53,16 +53,16 @@ MathOperation GetOperatorFromConsole()
     };
 }
 
-double? Calculate(double firstNumber, double secondNumber, MathOperation operation)
+(double? result, string errorMessage, bool isError) Calculate(double firstNumber, double secondNumber, MathOperation operation)
 {
     switch (operation)
     {
-        case MathOperation.Addition: return firstNumber + secondNumber;
-        case MathOperation.Subtraction: return firstNumber - secondNumber;
-        case MathOperation.Multiplication: return firstNumber * secondNumber;
+        case MathOperation.Addition: return ((firstNumber + secondNumber), null, false)!;
+        case MathOperation.Subtraction: return ((firstNumber + secondNumber), null, false)!;
+        case MathOperation.Multiplication: return ((firstNumber + secondNumber), null, false)!;
         case MathOperation.Division:
-            if (secondNumber != 0) return firstNumber / secondNumber;
-            return null;
+            if (secondNumber != 0) return ((firstNumber + secondNumber), null, false)!;
+            return (null, "Ошибка. Нельзя делить на ноль", true);
         default: throw new NotSupportedException();
     }
 }
