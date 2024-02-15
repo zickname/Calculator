@@ -58,10 +58,10 @@ calculateResult Calculate(double firstNumber, double secondNumber, MathOperation
     switch (operation)
     {
         case MathOperation.Addition: return new calculateResult((firstNumber + secondNumber), null, false);
-        case MathOperation.Subtraction: return new calculateResult((firstNumber + secondNumber), null, false);
-        case MathOperation.Multiplication: return new calculateResult((firstNumber + secondNumber), null, false);
+        case MathOperation.Subtraction: return new calculateResult((firstNumber - secondNumber), null, false);
+        case MathOperation.Multiplication: return new calculateResult((firstNumber * secondNumber), null, false);
         case MathOperation.Division:
-            if (secondNumber != 0) return new calculateResult((firstNumber + secondNumber), null, false);
+            if (secondNumber != 0) return new calculateResult((firstNumber / secondNumber), null, false);
             return new calculateResult(null, "Ошибка. Нельзя делить на ноль", true);
         default: throw new NotSupportedException();
     }
