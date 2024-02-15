@@ -49,7 +49,7 @@ MathOperation GetOperatorFromConsole()
         '-' => MathOperation.Subtraction,
         '*' => MathOperation.Multiplication,
         '/' => MathOperation.Division,
-        _ => throw new ArgumentException("Неверный знак действия")
+        _ => throw new NotSupportedException()
     };
 }
 
