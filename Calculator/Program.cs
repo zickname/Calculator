@@ -10,7 +10,7 @@ while (true)
     Console.Write("Введите второе число: ");
 
     double secondNumber = GetNumberFromConsole();
-    (double? result, string errorMessage, bool isError) result = Calculate(firstNumber, secondNumber, operation);
+    calculateResult result = Calculate(firstNumber, secondNumber, operation);
     
     if (result.isError) 
     {
@@ -53,19 +53,21 @@ MathOperation GetOperatorFromConsole()
     };
 }
 
-(double? result, string errorMessage, bool isError) Calculate(double firstNumber, double secondNumber, MathOperation operation)
+calculateResult Calculate(double firstNumber, double secondNumber, MathOperation operation)
 {
     switch (operation)
     {
-        case MathOperation.Addition: return ((firstNumber + secondNumber), null, false)!;
-        case MathOperation.Subtraction: return ((firstNumber + secondNumber), null, false)!;
-        case MathOperation.Multiplication: return ((firstNumber + secondNumber), null, false)!;
+        case MathOperation.Addition: return new calculateResult((firstNumber + secondNumber), null, false);
+        case MathOperation.Subtraction: return new calculateResult((firstNumber + secondNumber), null, false);
+        case MathOperation.Multiplication: return new calculateResult((firstNumber + secondNumber), null, false);
         case MathOperation.Division:
-            if (secondNumber != 0) return ((firstNumber + secondNumber), null, false)!;
-            return (null, "Ошибка. Нельзя делить на ноль", true);
+            if (secondNumber != 0) return new calculateResult((firstNumber + secondNumber), null, false);
+            return new calculateResult(null, "Ошибка. Нельзя делить на ноль", true);
         default: throw new NotSupportedException();
     }
 }
+
+record calculateResult(double? result, string? errorMessage, bool isError);
 
 enum MathOperation
 {
