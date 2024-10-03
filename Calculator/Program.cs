@@ -3,30 +3,31 @@
 while (true)
 {
     Console.Write("Введите первое число: ");
-    
-    double firstNumber = GetNumberFromConsole();
+
+    decimal firstNumber = GetNumberFromConsole();
     MathOperation operation = GetOperatorFromConsole();
 
     Console.Write("Введите второе число: ");
 
-    double secondNumber = GetNumberFromConsole();
+    decimal secondNumber = GetNumberFromConsole();
     calculateResult result = Calculate(firstNumber, secondNumber, operation);
-    
-    if (result.isError) 
+
+    if (result.isError)
+
     {
         Console.WriteLine($"{result.errorMessage}");
+        
         continue;
     }
 
     Console.WriteLine($"Результат: {result.result}");
-
 }
 
-static double GetNumberFromConsole()
+static decimal GetNumberFromConsole()
 {
-    double number;
+    decimal number;
 
-    while (!double.TryParse(Console.ReadLine(), NumberStyles.Float, CultureInfo.CurrentCulture, out number))
+    while (!decimal.TryParse(Console.ReadLine(), NumberStyles.Float, CultureInfo.CurrentCulture, out number))
         Console.WriteLine("Ошибка. Введите корректное число.");
 
     return number;
@@ -53,7 +54,7 @@ MathOperation GetOperatorFromConsole()
     };
 }
 
-calculateResult Calculate(double firstNumber, double secondNumber, MathOperation operation)
+calculateResult Calculate(decimal firstNumber, decimal secondNumber, MathOperation operation)
 {
     switch (operation)
     {
@@ -67,7 +68,7 @@ calculateResult Calculate(double firstNumber, double secondNumber, MathOperation
     }
 }
 
-record calculateResult(double? result, string? errorMessage, bool isError);
+record calculateResult(decimal? result, string? errorMessage, bool isError);
 
 enum MathOperation
 {
